@@ -74,9 +74,11 @@ for line in uniqueList:
 df = pd.DataFrame.from_records(results)
 df.head()
 
-#Sets the label for future reference
+#Decides if the article is positive or negative
 
 df['label'] = 0
+df.loc[df['compound'] > 0.2, 'label'] = 1
+df.loc[df['compound'] < -0.2, 'label'] = -1
 
 #Gives the current date and stores it in the csv file to see the progression
 #and change of the news articles
