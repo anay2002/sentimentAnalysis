@@ -65,8 +65,8 @@ for line in uniqueList:
     pol_score['headline'] = line
     results.append(pol_score)
     print()
-    print(uniqueList[counter])
-    pprint(results[counter], width=100)
+    print(uniqueList[sentimentCounter])
+    pprint(results[sentimentCounter], width=100)
     sentimentCounter += 1
 
 
@@ -83,10 +83,10 @@ df.loc[df['compound'] < -0.2, 'label'] = -1
 #Gives the current date and stores it in the csv file to see the progression
 #and change of the news articles
 date = datetime.datetime.fromtimestamp(int(time.time())).strftime('%Y-%m%d %H:%M:%S')
-tlDf = p
-d.DataFrame([[date, stockTickerCapitalized]], columns=['headline', 'label'])
+tlDf = pd.DataFrame([[date, stockTicker]], columns=['headline', 'label'])
 df2 = df[['headline', 'label']]
 df2 = df2.append(tlDf)
+
 
 #Adds all the article titles and their specific sentiment value into the specified
 #csv file, but the sentiment is rounded to either -1, 0, or 1, deciding the
